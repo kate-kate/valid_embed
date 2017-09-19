@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contract creation</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {% for system in form.systems %}
+        {{ form_row(system.serialNumber) }}
+        {{ form_row(system.longString) }}
+
+        {% for part in system.parts %}
+            {{ form_row(part.serialNumber) }}
+            {{ form_row(part.longString) }}
+        {% endfor %}
+    {% endfor %}
+    <input type="submit" value="Create"/>
+    {{ form_end(form) }}
+
+{% endblock %}
